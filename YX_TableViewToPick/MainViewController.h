@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  YX_TableViewToPick
 //
 //  Created by yang on 16/8/3.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MainViewController : UIViewController
 
 @end
-

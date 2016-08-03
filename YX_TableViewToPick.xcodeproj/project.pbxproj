@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		2FFA07D31D5185BB003E1437 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA07D21D5185BB003E1437 /* main.m */; };
 		2FFA07D61D5185BB003E1437 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA07D51D5185BB003E1437 /* AppDelegate.m */; };
-		2FFA07D91D5185BB003E1437 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA07D81D5185BB003E1437 /* ViewController.m */; };
 		2FFA07DC1D5185BB003E1437 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA07DA1D5185BB003E1437 /* Main.storyboard */; };
 		2FFA07DE1D5185BB003E1437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA07DD1D5185BB003E1437 /* Assets.xcassets */; };
 		2FFA07E11D5185BB003E1437 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA07DF1D5185BB003E1437 /* LaunchScreen.storyboard */; };
+		2FFA07EA1D5185E2003E1437 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA07E91D5185E2003E1437 /* MainViewController.m */; };
+		2FFA07ED1D518605003E1437 /* PickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFA07EC1D518605003E1437 /* PickerView.m */; };
+		2FFA07F31D51C90E003E1437 /* myself_personalData_selected_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FFA07F21D51C90E003E1437 /* myself_personalData_selected_bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +22,15 @@
 		2FFA07D21D5185BB003E1437 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2FFA07D41D5185BB003E1437 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2FFA07D51D5185BB003E1437 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2FFA07D71D5185BB003E1437 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2FFA07D81D5185BB003E1437 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2FFA07DB1D5185BB003E1437 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FFA07DD1D5185BB003E1437 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FFA07E01D5185BB003E1437 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2FFA07E21D5185BB003E1437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FFA07E81D5185E2003E1437 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		2FFA07E91D5185E2003E1437 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		2FFA07EB1D518605003E1437 /* PickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerView.h; sourceTree = "<group>"; };
+		2FFA07EC1D518605003E1437 /* PickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerView.m; sourceTree = "<group>"; };
+		2FFA07F21D51C90E003E1437 /* myself_personalData_selected_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myself_personalData_selected_bg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +63,13 @@
 		2FFA07D01D5185BB003E1437 /* YX_TableViewToPick */ = {
 			isa = PBXGroup;
 			children = (
+				2FFA07F21D51C90E003E1437 /* myself_personalData_selected_bg.png */,
 				2FFA07D41D5185BB003E1437 /* AppDelegate.h */,
 				2FFA07D51D5185BB003E1437 /* AppDelegate.m */,
-				2FFA07D71D5185BB003E1437 /* ViewController.h */,
-				2FFA07D81D5185BB003E1437 /* ViewController.m */,
+				2FFA07E81D5185E2003E1437 /* MainViewController.h */,
+				2FFA07E91D5185E2003E1437 /* MainViewController.m */,
+				2FFA07EB1D518605003E1437 /* PickerView.h */,
+				2FFA07EC1D518605003E1437 /* PickerView.m */,
 				2FFA07DA1D5185BB003E1437 /* Main.storyboard */,
 				2FFA07DD1D5185BB003E1437 /* Assets.xcassets */,
 				2FFA07DF1D5185BB003E1437 /* LaunchScreen.storyboard */,
@@ -139,6 +147,7 @@
 				2FFA07E11D5185BB003E1437 /* LaunchScreen.storyboard in Resources */,
 				2FFA07DE1D5185BB003E1437 /* Assets.xcassets in Resources */,
 				2FFA07DC1D5185BB003E1437 /* Main.storyboard in Resources */,
+				2FFA07F31D51C90E003E1437 /* myself_personalData_selected_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FFA07D91D5185BB003E1437 /* ViewController.m in Sources */,
+				2FFA07ED1D518605003E1437 /* PickerView.m in Sources */,
 				2FFA07D61D5185BB003E1437 /* AppDelegate.m in Sources */,
+				2FFA07EA1D5185E2003E1437 /* MainViewController.m in Sources */,
 				2FFA07D31D5185BB003E1437 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +310,7 @@
 				2FFA07E71D5185BB003E1437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
