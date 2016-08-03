@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "PickerView.h"
-@interface MainViewController ()<PickViewDelegate>//,PickViewDataSource>
+@interface MainViewController ()<PickViewDelegate,PickViewDataSource>
 @property (nonatomic, strong) PickerView *pickView;
 @end
 
@@ -20,35 +20,23 @@
     }
     return _pickView;
 }
-//- (NSInteger)numberOfRowsInSelector:(PickerView *)valueSelector{
-//    return 10;
-//}
-//- (CGFloat)rowHeightInSelector:(PickerView *)valueSelector{
-//    return 30;
-//}
-- (void)selector:(UITableView *)valueSelector didSelectRowAtIndex:(NSInteger)index{
-    NSLog(@"Selected index %ld",(long)index);
-//    UITableViewCell *cell = [valueSelector cellForRowAtIndexPath:[NSIndexPath indexPathForRow:index+3 inSection:0]];
-//    cell.backgroundColor = [UIColor greenColor];
-    
-}
-//- (CGFloat)rowWidthInSelector:(PickerView *)valueSelector{
-//    return 50;
-//}
-//- (CGRect)rectForSelectionInSelector:(PickerView *)valueSelector{
-//    return CGRectMake(0, 0, 10, 10);
-//}
-//- (UIView *)selector:(PickerView *)valueSelector viewForRowAtIndex:(NSInteger)index{
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
-//    return view;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.pickView];
 }
-
+#pragma mark PickViewDelegate
+- (void)selector:(UITableView *)valueSelector didSelectRowAtIndex:(NSInteger)index{
+    NSLog(@"Selected index %ld",(long)index);
+}
+#pragma mark PickViewDataSource
+- (NSInteger)numberOfRowsInSelector:(PickerView *)valueSelector{
+    return 20;
+}
+- (CGFloat)rowHeightInSelector:(PickerView *)valueSelector{
+    return 45;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

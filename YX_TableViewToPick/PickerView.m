@@ -19,23 +19,27 @@
     if (self = [super initWithFrame:frame]) {
         
         _selectionRect = CGRectMake( 0,self.frame.size.height/2-22.5, 45.0, 45.0);//[self.dataSource rectForSelectionInSelector:self];
+        //创建tableView
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        //隐藏cell的间隔线
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        _tableView.rowHeight = 45;//[self.dataSource rowHeightInSelector:self];
+        //设置cell的高度
+        _tableView.rowHeight = [self.dataSource rowHeightInSelector:self];
+        //设置留白
         _tableView.contentInset = UIEdgeInsetsMake( _selectionRect.origin.y, 0,_tableView.frame.size.height - _selectionRect.origin.y - _selectionRect.size.height  , 0);//UIEdgeInsetsMake( _selectionRect.origin.y, 0, _tableView.frame.size.height - _selectionRect.origin.y - _selectionRect.size.height  , 0);
-        
+        //隐藏滚动条
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
         
         [self addSubview:_tableView];
-        
+        //设置背景图片 设置透明度 位置在视图中间那一个cell
         UIImageView *selectionImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"myself_personalData_selected_bg"]];
-        selectionImageView.frame = CGRectMake( 0,self.frame.size.height/2-22.5, _tableView.frame.size.width,45 );//_selectionRect;
+        
+        selectionImageView.frame = CGRectMake( 0,self.frame.size.height/2-_tableView.rowHeight/2, _tableView.frame.size.width,_tableView.rowHeight );
         selectionImageView.alpha = 0.7;
+        
         [self addSubview:selectionImageView];
         
     }
@@ -47,103 +51,56 @@
 }
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //NSInteger rows = [self.dataSource numberOfRowsInSelector:self];
-    return 20;
+    return [self.dataSource numberOfRowsInSelector:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *CellIdentifier = @"cell";//[NSString stringWithFormat:@"%ld%ldcell",(long)indexPath.section,(long)indexPath.row];
+    NSString *CellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
     }
-    
-    //NSLog(@"%lu",(unsigned long)cell.contentView.subviews.count);
-    //cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    //设置cell的显示内容
+    UILabel *show = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
+    show.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    show.textAlignment = NSTextAlignmentCenter;
+
     if (cell.contentView.subviews.count == 0) {
-        UILabel *show = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
-        show.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-        //show.backgroundColor = [UIColor greenColor];
-        show.textAlignment = NSTextAlignmentCenter;
         [cell.contentView addSubview:show];
     }else{
         NSArray *arr = [[NSArray alloc]initWithArray:cell.contentView.subviews];
         for (UIView *view in arr) {
             [view removeFromSuperview];
         }
-        UILabel *show = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 45)];
-        show.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-        show.textAlignment = NSTextAlignmentCenter;
         [cell.contentView addSubview:show];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    //    NSArray *contentSubviews = [cell.contentView subviews];
-    //    //We the content view already has a subview we just replace it, no need to add it again
-    //    //hopefully ARC will do the rest and release the old retained view
-    //    if ([contentSubviews count] >0 ) {
-    //        UIView *contentSubV = [contentSubviews objectAtIndex:0];
-    //
-    //        //This will release the previous contentSubV
-    //        [contentSubV removeFromSuperview];
-    //        BOOL selected = indexPath.row == selectedIndexPath.row;
-    //        UIView *viewToAdd = nil;
-    //        if ([self.dataSource respondsToSelector:@selector(selector:viewForRowAtIndex:selected:)]) {
-    //            viewToAdd = [self.dataSource selector:self viewForRowAtIndex:indexPath.row selected:selected];
-    //        } else {
-    //            viewToAdd = [self.dataSource selector:self viewForRowAtIndex:indexPath.row];
-    //        }
-    //        contentSubV = viewToAdd;
-    //        if (self.debugEnabled) {
-    //            viewToAdd.layer.borderWidth = 1.0;
-    //            viewToAdd.layer.borderColor = [UIColor redColor].CGColor;
-    //        }
-    //        [cell.contentView addSubview:contentSubV];
-    //    }
-    //    else {
-    //        BOOL selected = indexPath.row == selectedIndexPath.row;
-    //        UIView *viewToAdd = nil;
-    //        if ([self.dataSource respondsToSelector:@selector(selector:viewForRowAtIndex:selected:)]) {
-    //            viewToAdd = [self.dataSource selector:self viewForRowAtIndex:indexPath.row selected:selected];
-    //        } else {
-    //            viewToAdd = [self.dataSource selector:self viewForRowAtIndex:indexPath.row];
-    //        }
-    //        //This is a new cell so we just have to add the view
-    //        if (self.debugEnabled) {
-    //            viewToAdd.layer.borderWidth = 1.0;
-    //            viewToAdd.layer.borderColor = [UIColor redColor].CGColor;
-    //        }
-    //        [cell.contentView addSubview:viewToAdd];
-    //
-    //    }
-    //
-    //    if (self.debugEnabled) {
-    //        cell.layer.borderColor = [UIColor greenColor].CGColor;
-    //        cell.layer.borderWidth = 1.0;
-    //    }
-    //
-    //    if (self.horizontalScrolling) {
-    //        CGAffineTransform rotateTable = CGAffineTransformMakeRotation(M_PI_2);
-    //        cell.transform = rotateTable;
-    //    }
-    return cell;
+       return cell;
 }
+#pragma mark 选中cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == _tableView) {//UITableViewScrollPositionBottom UITableViewScrollPositionNone UITableViewScrollPositionTop UITableViewScrollPositionMiddle
+    if (tableView == _tableView) {
+        
         selectedIndexPath = indexPath;
+        //滚动到点击的那一个cell 四种选择
+        //UITableViewScrollPositionBottom UITableViewScrollPositionNone UITableViewScrollPositionTop UITableViewScrollPositionMiddle
         [_tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        //通知vc点击了哪一个cell
         [self.delegate selector:_tableView didSelectRowAtIndex:indexPath.row];
         [_tableView reloadData];
     }
 }
+#pragma mark拖动的时候
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     
     if (!decelerate) {
         [self scrollToTheSelectedCell];
     }
 }
+#pragma mark 拖动执行的关键代码
 - (void)scrollToTheSelectedCell {
     
     CGRect selectionRectConverted = [self convertRect:_selectionRect toView:_tableView];
@@ -168,18 +125,9 @@
         [_tableView reloadData];
     }
 }
-//-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height/2)];
-//    view.backgroundColor = [UIColor clearColor];
-//    return view;
-//}
-//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    return tableView.frame.size.height/2;
-//}
-//- (void)selectRowAtIndex:(NSUInteger)index{}
-//- (void)selectRowAtIndex:(NSUInteger)index animated:(BOOL)animated{}
-//
-//- (void)reloadData{}
+- (void)reloadData{
+    [_tableView reloadData];
+}
 
 
 
