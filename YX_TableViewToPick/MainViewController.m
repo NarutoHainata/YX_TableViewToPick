@@ -8,6 +8,10 @@
 
 #import "MainViewController.h"
 #import "PickerView.h"
+
+#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
 @interface MainViewController ()<PickViewDelegate,PickViewDataSource>
 @property (nonatomic, strong) PickerView *pickView;
 @end
