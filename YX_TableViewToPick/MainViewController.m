@@ -21,6 +21,7 @@
     if (_pickView == nil) {
         _pickView = [[PickerView alloc]initWithFrame:CGRectMake(40, 100, self.view.frame.size.width-80, 225)];
         _pickView.delegate = self;
+        _pickView.dataSource = self;
     }
     return _pickView;
 }

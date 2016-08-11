@@ -26,13 +26,14 @@
         //隐藏cell的间隔线
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         //设置cell的高度
-        _tableView.rowHeight = [self.dataSource rowHeightInSelector:self];
+        NSLog(@"%f",[self.dataSource rowHeightInSelector:self]);
+        
         //设置留白
         _tableView.contentInset = UIEdgeInsetsMake( _selectionRect.origin.y, 0,_tableView.frame.size.height - _selectionRect.origin.y - _selectionRect.size.height  , 0);//UIEdgeInsetsMake( _selectionRect.origin.y, 0, _tableView.frame.size.height - _selectionRect.origin.y - _selectionRect.size.height  , 0);
         //隐藏滚动条
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
-        
+        _tableView.rowHeight = 45;
         [self addSubview:_tableView];
         //设置背景图片 设置透明度 位置在视图中间那一个cell
         UIImageView *selectionImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"myself_personalData_selected_bg"]];
@@ -51,6 +52,7 @@
 }
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%ld",(long)[self.dataSource numberOfRowsInSelector:self]);
     return [self.dataSource numberOfRowsInSelector:self];
 }
 
@@ -61,6 +63,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:CellIdentifier];
     }
+    
     //设置cell的显示内容
     UILabel *show = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 45)];
     show.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
